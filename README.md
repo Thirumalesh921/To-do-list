@@ -8,6 +8,12 @@ A simple To-Do List web application built using Django, allowing users to add, u
 ✅ Delete tasks  
 ✅ User authentication (Login & Signup)  
 
+### 📚 Technologies Used  
+- Django  
+- PostgreSQL (Database)  
+- HTML, CSS 
+
+
 # Home Page
 
 ![image](https://github.com/user-attachments/assets/7a9262a5-81a3-4a7c-ba15-47a4ecd0dcf2)
