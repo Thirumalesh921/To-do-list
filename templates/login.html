@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body{
+            background-color: rgb(241, 240, 240);
+        }
+        .container {
+            margin-top: 10%;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .f_element {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        #submit {
+            cursor: pointer;
+            color: wheat;
+            background-color: black;
+            border: none;
+        }
+        #submit:hover{
+            color: black;
+            background-color: wheat;
+        }
+        p a {
+            border-radius: 10px;
+            padding: 10px;
+            margin: 5px;
+            text-decoration: none;
+            color: wheat;
+            background-color: black;
+            border: none;
+        }
+        p a:hover{
+            color: black;
+            background-color: wheat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action='/accounts/login' method="POST">
+            {% csrf_token %}
+            <input class="f_element" type="text" name="username" placeholder="username"><br>
+            <input class="f_element" type="password" name="password" placeholder="password"><br>
+            <a href="/accounts/forgot">Forgot password?</a><br>
+            <input class="f_element" type="submit" id="submit" value="Login">
+        </form>
+        <p><a href="/accounts/register">Register</a></p>
+        {% for i in messages %}
+        <h3>{{i}}</h3>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

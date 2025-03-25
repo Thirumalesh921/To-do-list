@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot</title>
+    <style>
+        body{
+            background-color: rgb(241, 240, 240);
+        }
+        .container{
+            margin-top: 10%;
+            text-align: center;
+        }
+        .f_element {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        #submit{
+            font-family: 'Courier New', Courier, monospace;
+            border-radius: 10px;
+            font-size: 20px;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            color: wheat;
+            background-color: black;
+            border: none;
+        }
+        #submit:hover{
+            color: black;
+            background-color: wheat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="forgot" method="POST">
+            {% csrf_token %}
+            <input type="text" class="f_element" placeholder="Username" name="username" required><br>
+            {% if not exist %}
+            <button type="submit" name="action" value="verify" id="submit">Verify</button><br>
+            {% endif %}
+            {% if exist %}
+            <input type="password" class="f_element" placeholder="newpassword" name="p1" required><br>
+            <input type="password" class="f_element" placeholder="Re-enter new passowrd" name="p2" required><br>
+            <button type="submit" name="action" value="change" id="submit">Change</button><br>
+            {% endif %}
+        </form>
+        {% for i in messages %}
+        <h2>{{i}}</h2>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

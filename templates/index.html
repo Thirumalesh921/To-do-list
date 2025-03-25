@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body{
+            background-color: rgb(241, 240, 240);
+        }
+        h2 {
+            font-family: 'Courier New', Courier;
+            font-size: 50px;
+            text-align: center;
+            color: #333;
+        }
+        .container {    
+            width: 40%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            border-radius: 5px;
+            font-size: 20px;
+            padding: 10px;
+        }
+        .add {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .done {
+            text-decoration: line-through;
+        }
+        .delete {
+            background: red;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #list{
+            width: 90%;
+            margin: 10px auto auto auto;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            grid-gap: 5px;
+        }
+        #text{
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: yellowgreen;
+            color: red;
+            cursor: pointer;
+        }
+        #inp{
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            grid-gap: 5px;
+        }
+        #inp button{
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .navbar{
+            text-align: right;
+        }
+        .navbar ul{
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .navbar a{
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            color: wheat;
+            background-color: black;
+            text-decoration: none;
+        }
+        .navbar a:hover{
+            color: black;
+            background-color: wheat;
+        }
+        li{
+            margin: 10px;
+            list-style: none;
+            display: inline-block;
+        }
+        .container a{
+            font-size: 20px;
+            text-decoration: none;
+            font-family: 'Courier New', Courier, monospace;
+            color: wheat;
+            background-color: black;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .container a:hover{
+            color: black;
+            background-color: wheat;
+        }
+        .container p{
+            justify-self: center;
+        }
+        #hid{
+            visibility: hidden;
+        }
+        #text{
+            font-size: 20px;
+            color: red;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a id="{% if not user.is_authenticated %}hid{% endif %}" href="/accounts/logout">Logout</a></li>
+        </ul>
+    </div>
+    {% if user.is_authenticated %}
+    <h2>{{ user.first_name}}'s List</h2>
+    <div class="container">
+        <form action="actions" method="POST">
+            {% csrf_token %}
+            <div id="inp">
+                <input type="text" name="task_text" placeholder="Enter task">
+                <button type="submit" name="action" value="add" class="add">Add</button>
+            </div>
+            {% for task in tasks %}
+            <div id="list">
+                <button type="submit" id="text" name="action" value="toggle+{{task.id}}" class="{% if task.isdone %}done{% endif %}">
+                    {{task.test}}
+                </button>
+                <button type="submit" name="action" value="delete+{{task.id}}" class="delete" id="del">X</button>
+            </div>
+            {% endfor %}
+        </form>
+    </div>
+    {% else %}
+    <div class="container">
+        <p><a href="/accounts/login">Login to view your list</a></p>
+    </div>
+    {% endif %}
+</body>
+</html>
