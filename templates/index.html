@@ -5,117 +5,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
     <style>
-        body{
-            background-color: rgb(241, 240, 240);
-        }
-        h2 {
-            font-family: 'Courier New', Courier;
-            font-size: 50px;
-            text-align: center;
-            color: #333;
-        }
-        .container {    
-            width: 40%;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        input {
-            border-radius: 5px;
-            font-size: 20px;
-            padding: 10px;
-        }
-        .add {
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .done {
-            text-decoration: line-through;
-        }
-        .delete {
-            background: red;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-        #list{
-            width: 90%;
-            margin: 10px auto auto auto;
-            display: grid;
-            grid-template-columns: 3fr 1fr;
-            grid-gap: 5px;
-        }
-        #text{
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: yellowgreen;
-            color: red;
-            cursor: pointer;
-        }
-        #inp{
-            display: grid;
-            grid-template-columns: 3fr 1fr;
-            grid-gap: 5px;
-        }
-        #inp button{
-            border-radius: 5px;
-            padding: 10px;
-        }
-        .navbar{
-            text-align: right;
-        }
-        .navbar ul{
-            font-family: 'Courier New', Courier, monospace;
-        }
-        .navbar a{
-            font-size: 20px;
-            padding: 10px;
-            border-radius: 10px;
-            color: wheat;
-            background-color: black;
-            text-decoration: none;
-        }
-        .navbar a:hover{
-            color: black;
-            background-color: wheat;
-        }
-        li{
-            margin: 10px;
-            list-style: none;
-            display: inline-block;
-        }
-        .container a{
-            font-size: 20px;
-            text-decoration: none;
-            font-family: 'Courier New', Courier, monospace;
-            color: wheat;
-            background-color: black;
-            border-radius: 10px;
-            padding: 10px;
-        }
-        .container a:hover{
-            color: black;
-            background-color: wheat;
-        }
-        .container p{
-            justify-self: center;
-        }
-        #hid{
-            visibility: hidden;
-        }
-        #text{
-            font-size: 20px;
-            color: red;
-            font-family: 'Courier New', Courier, monospace;
-        }
-    </style>
+    body {
+        background-color: rgb(241, 240, 240);
+        margin: 0;
+        padding: 0;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        text-align: center;
+        color: #333;
+        margin: 20px 0;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input, button {
+        font-size: 1rem;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .add {
+        background-color: #28a745;
+        color: white;
+        cursor: pointer;
+    }
+
+    .delete {
+        background: red;
+        color: white;
+        cursor: pointer;
+    }
+
+    .done {
+        text-decoration: line-through;
+    }
+
+    #list {
+        width: 100%;
+        margin: 10px auto;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    #text {
+        flex: 3;
+        background-color: yellowgreen;
+        color: red;
+        cursor: pointer;
+    }
+
+    #inp {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+    }
+
+    #inp input {
+        flex: 3;
+    }
+
+    #inp button {
+        flex: 1;
+    }
+
+    .navbar {
+        text-align: right;
+        padding: 10px;
+    }
+
+    .navbar ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar a {
+        font-size: 1rem;
+        padding: 10px;
+        border-radius: 10px;
+        color: wheat;
+        background-color: black;
+        text-decoration: none;
+    }
+
+    .navbar a:hover {
+        color: black;
+        background-color: wheat;
+    }
+
+    li {
+        list-style: none;
+        display: inline-block;
+        margin: 5px;
+    }
+
+    .container a {
+        font-size: 1rem;
+        text-decoration: none;
+        color: wheat;
+        background-color: black;
+        border-radius: 10px;
+        padding: 10px;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .container a:hover {
+        color: black;
+        background-color: wheat;
+    }
+
+    .container p {
+        text-align: center;
+    }
+
+    #hid {
+        visibility: hidden;
+    }
+</style>
+
 </head>
 <body>
     <div class="navbar">
